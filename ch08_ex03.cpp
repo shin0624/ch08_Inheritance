@@ -1,35 +1,34 @@
 #include<iostream>
 #include<string>
-#include<cstring>
 using namespace std;
 
 class TV {
-	int size;//½ºÅ©¸° Å©±â
+	int size;//ìŠ¤í¬ë¦° í¬ê¸°
 public:
 	TV() { size = 20; }
-	TV(int size) { this->size = size; }//¸Å°³º¯¼ö¸¦ °®´Â ±âº» Å¬·¡½º »ı¼ºÀÚ
-	int getSize() { return size; }//size¸¦ ¸®ÅÏÇÏ´Â ¸Ş¼­µå
+	TV(int size) { this->size = size; }//ë§¤ê°œë³€ìˆ˜ë¥¼ ê°–ëŠ” ê¸°ë³¸ í´ë˜ìŠ¤ ìƒì„±ì
+	int getSize() { return size; }//sizeë¥¼ ë¦¬í„´í•˜ëŠ” ë©”ì„œë“œ
 };
 
-class WideTV : public TV{//TV¸¦ »ó¼Ó¹Ş´Â WIDETV
+class WideTV : public TV{//TVë¥¼ ìƒì†ë°›ëŠ” WIDETV
 	bool videoIn;
 public:
-	WideTV(int size, bool videoIn) : TV(size) { this->videoIn = videoIn; }//wideTVÈ£Ãâ ½Ã ±âº» Å¬·¡½ºÀÇ ¸Å°³º¯¼ö¸¦ °®´Â TV »ı¼ºÀÚ¿¡ °ª Àü´Ş
+	WideTV(int size, bool videoIn) : TV(size) { this->videoIn = videoIn; }//wideTVí˜¸ì¶œ ì‹œ ê¸°ë³¸ í´ë˜ìŠ¤ì˜ ë§¤ê°œë³€ìˆ˜ë¥¼ ê°–ëŠ” TV ìƒì„±ìì— ê°’ ì „ë‹¬
 	bool getVideoIn() { return videoIn; }
 };
 
-class SmartTV :public WideTV {//wideTV¸¦ »ó¼Ó¹Ş´Â SmartTV. wideTVÀÇ ºÎ¸ğÅ¬·¡½ºÀÎ TV Å¬·¡½ºÀÇ ¸â¹ö¿¡µµ Á¢±Ù °¡´É
-	string ipAddr;// ipÁÖ¼Ò
+class SmartTV :public WideTV {//wideTVë¥¼ ìƒì†ë°›ëŠ” SmartTV. wideTVì˜ ë¶€ëª¨í´ë˜ìŠ¤ì¸ TV í´ë˜ìŠ¤ì˜ ë©¤ë²„ì—ë„ ì ‘ê·¼ ê°€ëŠ¥
+	string ipAddr;// ipì£¼ì†Œ
 public:
-	SmartTV(string ipAddr, int size) :WideTV(size, true) { this->ipAddr = ipAddr; }//smartTVÈ£Ãâ ½Ã wideTV »ı¼ºÀÚ¿¡ °ª Àü´Ş
+	SmartTV(string ipAddr, int size) :WideTV(size, true) { this->ipAddr = ipAddr; }//smartTVí˜¸ì¶œ ì‹œ wideTV ìƒì„±ìì— ê°’ ì „ë‹¬
 	string getIpAddr() { return ipAddr; }
 	
 };
 int main() {
-	//32ÀÎÄ¡ Å©±â¿¡ 192.0.0.1ÀÇ ÀÎÅÍ³İ ÁÖ¼Ò¸¦ °¡Áö´Â ½º¸¶Æ® tv°´Ã¼¸¦ »ı¼º.
+	//32ì¸ì¹˜ í¬ê¸°ì— 192.0.0.1ì˜ ì¸í„°ë„· ì£¼ì†Œë¥¼ ê°€ì§€ëŠ” ìŠ¤ë§ˆíŠ¸ tvê°ì²´ë¥¼ ìƒì„±.
 	SmartTV htv("192.0.0.1", 32);
 
 	cout << "size = " << htv.getSize() << endl;
-	cout << "videoIn = "<< boolalpha << htv.getVideoIn() << endl;// boolalpha = 0 ´ë½Å false, 1 ´ë½Å true¸¦ Ãâ·ÂÇÑ´Ù
+	cout << "videoIn = "<< boolalpha << htv.getVideoIn() << endl;// boolalpha = 0 ëŒ€ì‹  false, 1 ëŒ€ì‹  trueë¥¼ ì¶œë ¥í•œë‹¤
 	cout << "IP = " << htv.getIpAddr() << endl;
 }
